@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muthyala Manoj | AI Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Muthyala Manoj — AI Engineer, Developer, Builder. Luxury automotive-inspired digital craftsmanship."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Full-screen cinematic loader -->
+    <div class="loader" id="page-loader" aria-live="polite" aria-busy="true">
+      <div class="loader-inner">
+        <div class="loader-brand">MANOJ</div>
+        <div class="loader-ring" aria-hidden="true"></div>
+        <p class="loader-tagline">Calibrating experience</p>
+        <div class="loader-progress" aria-hidden="true">
+          <span class="loader-progress-bar"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom cursor spotlight (desktop) -->
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Parallax + particle layers behind content -->
+    <div class="parallax-bg" id="parallax-bg" aria-hidden="true">
+      <div class="parallax-plane plane-a"></div>
+      <div class="parallax-plane plane-b"></div>
+      <div class="parallax-plane plane-c"></div>
+      <canvas class="particles-layer" id="particles-canvas" width="1920" height="1080"></canvas>
+      <div class="grid-scan" aria-hidden="true"></div>
+    </div>
+
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="nav-shell" id="top">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#hero">MOJ</a>
+
+        <!-- Scroll progress stripe under navbar -->
+        <div class="nav-progress" aria-hidden="true">
+          <span class="nav-progress-fill" id="nav-progress-fill"></span>
+        </div>
+
+        <button
+          type="button"
+          class="nav-burger"
+          id="nav-burger"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Open menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu" aria-label="Sections">
+          <a class="nav-item active" href="#hero" data-section="hero">Hero</a>
+          <a class="nav-item" href="#about" data-section="about">About</a>
+          <a class="nav-item" href="#skills" data-section="skills">Skills</a>
+          <a class="nav-item" href="#projects" data-section="projects">Projects</a>
+          <a class="nav-item" href="#timeline" data-section="timeline">Timeline</a>
+          <a class="nav-item" href="#contact" data-section="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO: asymmetric cinematic strip -->
+      <section class="hero" id="hero" aria-label="Introduction">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="hero-kicker animate-hero i1">Portfolio / 2026</p>
+            <h1 class="hero-title animate-hero i2">
+              <span class="hero-title-stack">Muthyala</span>
+              <span class="hero-title-stack accent">Manoj</span>
+            </h1>
+            <p class="hero-role animate-hero i3">AI Engineer | Developer | Builder</p>
+            <p class="hero-drive-line animate-hero i4">Driven by Code. Powered by AI.</p>
+            <p class="hero-typing animate-hero i5">
+              <span id="typing-text"></span><span class="typing-caret" aria-hidden="true"></span>
+            </p>
+            <div class="hero-cta animate-hero i6">
+              <a class="btn-glow btn-primary" href="#projects">Explore work</a>
+              <a class="btn-glow btn-ghost" href="#contact">Start a dialogue</a>
+            </div>
+          </div>
+
+          <div class="hero-media animate-hero i7">
+            <div class="hero-frame">
+              <div class="hero-ring" aria-hidden="true"></div>
+              <img
+                src="./profile.jpeg"
+                alt="Muthyala Manoj"
+                class="hero-photo"
+                width="520"
+                height="520"
+              />
+            </div>
+            <p class="hero-caption">Precision build. Human signal.</p>
+          </div>
+        </div>
+        <div class="hero-scroll-hint" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="hero-scroll-line"></span>
+        </div>
+      </section>
+
+      <!-- ABOUT: offset glass panel -->
+      <section class="section about" id="about">
+        <div class="section-shell">
+          <div class="about-grid">
+            <div class="about-visual reveal" data-reveal>
+              <img
+                src="./profile.jpeg"
+                alt=""
+                class="about-photo"
+                width="320"
+                height="320"
+              />
+            </div>
+            <div class="about-copy reveal" data-reveal>
+              <p class="section-eyebrow">About</p>
+              <h2 class="section-title">Engineered clarity at every layer.</h2>
+              <p class="section-lead">
+                I am a builder focused on AI systems and web experiences that feel
+                intentional — fast, accessible, and ready for real users. I learn in
+                public through projects, iterate with discipline, and aim for work
+                that holds up under pressure.
+              </p>
+              <p class="section-body">
+                From interfaces to automation, I care about the details you notice
+                when everything simply works.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS: glass cards + animated bars -->
+      <section class="section skills" id="skills">
+        <div class="section-shell">
+          <div class="section-head reveal" data-reveal>
+            <p class="section-eyebrow">Skills</p>
+            <h2 class="section-title">Capability stack</h2>
+          </div>
+          <div class="skills-board">
+            <article class="skill-glass reveal" data-reveal>
+              <h3>AI &amp; ML tooling</h3>
+              <div class="skill-track" data-level="88"><span class="skill-fill"></span></div>
+            </article>
+            <article class="skill-glass reveal" data-reveal>
+              <h3>JavaScript / TypeScript</h3>
+              <div class="skill-track" data-level="86"><span class="skill-fill"></span></div>
+            </article>
+            <article class="skill-glass reveal" data-reveal>
+              <h3>Python</h3>
+              <div class="skill-track" data-level="84"><span class="skill-fill"></span></div>
+            </article>
+            <article class="skill-glass reveal" data-reveal>
+              <h3>HTML / CSS / UI</h3>
+              <div class="skill-track" data-level="92"><span class="skill-fill"></span></div>
+            </article>
+            <article class="skill-glass reveal" data-reveal>
+              <h3>Git &amp; collaboration</h3>
+              <div class="skill-track" data-level="85"><span class="skill-fill"></span></div>
+            </article>
+            <article class="skill-glass reveal" data-reveal>
+              <h3>Systems thinking</h3>
+              <div class="skill-track" data-level="82"><span class="skill-fill"></span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS: three tiles only -->
+      <section class="section projects" id="projects">
+        <div class="section-shell">
+          <div class="section-head reveal" data-reveal>
+            <p class="section-eyebrow">Projects</p>
+            <h2 class="section-title">Selected builds</h2>
+          </div>
+          <div class="project-deck">
+            <article class="project-tile tilt-card reveal" data-reveal>
+              <span class="project-index">01</span>
+              <h3>Case Management Website</h3>
+              <p>
+                A structured platform concept for workflows, roles, and case
+                visibility — clarity under load.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Repository</a>
+                <a href="#" class="project-link">Live</a>
+              </div>
+            </article>
+            <article class="project-tile tilt-card reveal" data-reveal>
+              <span class="project-index">02</span>
+              <h3>Portfolio Website</h3>
+              <p>
+                This experience: cinematic motion, glass panels, and performance
+                first delivery.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Repository</a>
+                <a href="#" class="project-link">Live</a>
+              </div>
+            </article>
+            <article class="project-tile tilt-card reveal" data-reveal>
+              <span class="project-index">03</span>
+              <h3>Upcoming AI Project</h3>
+              <p>
+                Next ship: practical AI UX with measurable outcomes — details
+                arriving soon.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Repository</a>
+                <a href="#" class="project-link">Live</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="section timeline-section" id="timeline">
+        <div class="section-shell">
+          <div class="section-head reveal" data-reveal>
+            <p class="section-eyebrow">Timeline</p>
+            <h2 class="section-title">Journey</h2>
+          </div>
+          <ol class="timeline" id="timeline-track">
+            <li class="timeline-node reveal" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="timeline-body">
+                <span class="timeline-label">Foundation</span>
+                <p>Programming fundamentals and problem-solving mindset.</p>
+              </div>
+            </li>
+            <li class="timeline-node reveal" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="timeline-body">
+                <span class="timeline-label">Web stack</span>
+                <p>HTML, CSS, JavaScript — shipping interfaces users can trust.</p>
+              </div>
+            </li>
+            <li class="timeline-node reveal" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="timeline-body">
+                <span class="timeline-label">AI engineering</span>
+                <p>Tools, prompting, and building toward production-grade AI workflows.</p>
+              </div>
+            </li>
+            <li class="timeline-node reveal" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="timeline-body">
+                <span class="timeline-label">Now</span>
+                <p>Projects, polish, and momentum toward impactful roles.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section contact" id="contact">
+        <div class="section-shell contact-shell reveal" data-reveal>
+          <div class="contact-intro">
+            <p class="section-eyebrow">Contact</p>
+            <h2 class="section-title">Let’s architect what’s next.</h2>
+            <p class="section-lead">
+              Share a concise note — collaborations, internships, or product ideas welcome.
+            </p>
+          </div>
+          <form class="contact-form" id="contact-form" novalidate>
+            <label class="sr-only" for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" placeholder="Name" required />
+
+            <label class="sr-only" for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" placeholder="Email" required />
+
+            <label class="sr-only" for="c-msg">Message</label>
+            <textarea id="c-msg" name="message" rows="4" placeholder="Message" required></textarea>
+
+            <button type="submit" class="btn-glow btn-primary btn-send">Transmit</button>
+            <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Muthyala Manoj</p>
+        <p class="footer-meta">© 2026 · Crafted with intent</p>
+        <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
