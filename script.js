@@ -156,7 +156,6 @@
     });
   }
 
-  /** Active section highlight */
   var sectionIds = [
     "hero",
     "about",
@@ -176,10 +175,10 @@
     var navObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            return;
-          }
+          if (!entry.isIntersecting) return;
+
           var id = entry.target.id;
+
           navItems.forEach(function (item) {
             item.classList.toggle(
               "active",
@@ -199,19 +198,21 @@
     });
   }
 
-  /** Fallback: pick closest section to top while scrolling */
   if (!("IntersectionObserver" in window)) {
     window.addEventListener(
       "scroll",
       function () {
         var closest = sectionIds[0];
+
         sectionIds.forEach(function (sid) {
           var el = document.getElementById(sid);
           if (!el) return;
+
           if (el.getBoundingClientRect().top < window.innerHeight * 0.32) {
             closest = sid;
           }
         });
+
         navItems.forEach(function (item) {
           item.classList.toggle(
             "active",
@@ -223,7 +224,6 @@
     );
   }
 
-  /** Back to top */
   if (toTopBtn) {
     toTopBtn.addEventListener("click", function () {
       window.scrollTo({
@@ -234,7 +234,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Parallax background (RAF)                                          */
+  /* Parallax background                                                */
   /* ------------------------------------------------------------------ */
 
   var planes = parallaxWrap
@@ -251,6 +251,7 @@
     "pointermove",
     function (event) {
       if (!planes.length || reducedMotion) return;
+
       targetX = (event.clientX / window.innerWidth - 0.5) * 38;
       targetY = (event.clientY / window.innerHeight - 0.5) * 28;
     },
@@ -261,7 +262,8 @@
     currX += (targetX - currX) * 0.045;
     currY += (targetY - currY) * 0.045;
 
-    scrollEase += (document.documentElement.scrollTop * -0.04 - scrollEase) * 0.06;
+    scrollEase +=
+      (document.documentElement.scrollTop * -0.04 - scrollEase) * 0.06;
 
     if (planes[0]) {
       planes[0].style.transform =
@@ -271,6 +273,7 @@
         (-currY * 0.25 + scrollEase * 0.5).toFixed(2) +
         "px,0)";
     }
+
     if (planes[1]) {
       planes[1].style.transform =
         "translate3d(" +
@@ -279,6 +282,7 @@
         (currY * 0.35 + scrollEase * 0.25).toFixed(2) +
         "px,0)";
     }
+
     if (planes[2]) {
       planes[2].style.transform =
         "translate3d(" +
@@ -296,7 +300,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Particle field (canvas)                                            */
+  /* Particle field                                                     */
   /* ------------------------------------------------------------------ */
 
   if (canvas && canvas.getContext && !reducedMotion) {
@@ -315,6 +319,7 @@
     function fillParticles() {
       var count = clamp(Math.floor(window.innerWidth / 28), 32, 80);
       parts = [];
+
       for (var i = 0; i < count; i += 1) {
         parts.push({
           x: Math.random() * window.innerWidth,
@@ -359,7 +364,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Scroll reveal + stagger delays                                     */
+  /* Scroll reveal                                                      */
   /* ------------------------------------------------------------------ */
 
   var revealItems = document.querySelectorAll("[data-reveal]");
@@ -383,43 +388,10 @@
     revealItems.forEach(function (el) {
       revealObserver.observe(el);
     });
-
-    /** Skills: animate progress bars once card enters */
-    var skillCards = document.querySelectorAll(".skill-glass");
-    var skillObs = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          window.setTimeout(function () {
-            entry.target.classList.add("fill-active");
-          }, reducedMotion ? 0 : 120);
-          skillObs.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.38 }
-    );
-
-    skillCards.forEach(function (card) {
-      skillObs.observe(card);
-    });
-
-    /** Timeline nodes stagger */
-    var nodes = document.querySelectorAll(".timeline-node[data-reveal]");
-    nodes.forEach(function (node, i) {
-      node.style.transitionDelay =
-        reducedMotion ? "0ms" : Math.min(i, 6) * 100 + "ms";
-    });
-  } else if (revealItems.length) {
-    revealItems.forEach(function (el) {
-      el.classList.add("in-view");
-    });
-    document.querySelectorAll(".skill-glass").forEach(function (card) {
-      card.classList.add("fill-active");
-    });
   }
 
   /* ------------------------------------------------------------------ */
-  /* Project tilt (3D)                                                  */
+  /* Project tilt                                                       */
   /* ------------------------------------------------------------------ */
 
   var tiltCards = document.querySelectorAll(".tilt-card");
@@ -432,6 +404,7 @@
         var py = event.clientY - rect.top;
         var rx = clamp(((py / rect.height) - 0.5) * -10, -8, 8);
         var ry = clamp(((px / rect.width) - 0.5) * 12, -10, 10);
+
         card.style.transform =
           "perspective(900px) rotateX(" +
           rx.toFixed(2) +
@@ -447,7 +420,6 @@
     });
   }
 
-  /** Magnetic tug on CTAs — lightweight */
   document.querySelectorAll(".btn-primary, .btn-ghost").forEach(function (btn) {
     if (reducedMotion) return;
 
@@ -455,6 +427,7 @@
       var rect = btn.getBoundingClientRect();
       var dx = event.clientX - (rect.left + rect.width / 2);
       var dy = event.clientY - (rect.top + rect.height / 2);
+
       btn.style.transform =
         "translate3d(" + dx * 0.04 + "px," + dy * 0.04 + "px,0)";
     });
@@ -475,12 +448,14 @@
       "Performance is the luxury detail.",
       "Every release should feel undeniable.",
     ];
+
     var pIndexTyping = 0;
     var charIndexTyping = 0;
     var deletingTyping = false;
 
     function stepTyping() {
       var phrase = phrasesTyping[pIndexTyping];
+
       if (!deletingTyping) {
         charIndexTyping += 1;
       } else {
@@ -490,6 +465,7 @@
       typingEl.textContent = phrase.slice(0, charIndexTyping);
 
       var delayTyping = deletingTyping ? 40 : 70;
+
       if (!deletingTyping && charIndexTyping === phrase.length) {
         deletingTyping = true;
         delayTyping = 1100;
@@ -510,17 +486,17 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Contact form validation                                            */
+  /* Contact form validation + n8n webhook                              */
   /* ------------------------------------------------------------------ */
 
   if (contactForm && formNote) {
     contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
+
       var nameEl = contactForm.elements.namedItem("name");
       var emailEl = contactForm.elements.namedItem("email");
       var msgEl = contactForm.elements.namedItem("message");
 
-      /** Remove previous error visuals */
       [nameEl, emailEl, msgEl].forEach(function (el) {
         if (el && el.classList) {
           el.classList.remove("input-error");
@@ -547,13 +523,48 @@
         msgEl.classList.add("input-error");
       }
 
-      formNote.style.color = ok ? "#b8eecb" : "#e8a9a9";
-      formNote.textContent = ok
-        ? "Transmission received — thank you."
-        : "Adjust the highlighted fields and try again.";
-      if (ok) {
-        contactForm.reset();
+      if (!ok) {
+        formNote.style.color = "#e8a9a9";
+        formNote.textContent =
+          "Adjust the highlighted fields and try again.";
+        return;
       }
+
+      formNote.style.color = "#b8eecb";
+      formNote.textContent = "Sending...";
+
+      fetch(
+        "https://manojx.app.n8n.cloud/webhook-test/ebfd6cb7-ddeb-4c73-9333-0a8097a2a358",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: msg,
+          }),
+        }
+      )
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Webhook failed");
+          }
+          return response.text();
+        })
+        .then(function () {
+          formNote.style.color = "#b8eecb";
+          formNote.textContent =
+            "Transmission received — thank you.";
+          contactForm.reset();
+        })
+        .catch(function (error) {
+          console.error(error);
+          formNote.style.color = "#e8a9a9";
+          formNote.textContent =
+            "Error sending message. Try again.";
+        });
     });
   }
 })();
