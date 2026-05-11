@@ -534,7 +534,7 @@
       formNote.textContent = "Sending...";
 
       fetch(
-        "https://manojx.app.n8n.cloud/webhook-test/ebfd6cb7-ddeb-4c73-9333-0a8097a2a358",
+        "https://manojx.app.n8n.cloud/webhook/ebfd6cb7-ddeb-4c73-9333-0a8097a2a358",
         {
           method: "POST",
           headers: {
